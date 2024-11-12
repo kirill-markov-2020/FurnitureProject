@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="Furniture" Height="650" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <StackPanel x:Name="AuthorizationPanel" Visibility="Visible">
+
+        </StackPanel>
+        <StackPanel x:Name="ManagerPanel" Visibility="Hidden">
+
+        </StackPanel>
+        <StackPanel x:Name="AdministratorPanel" Visibility="Hidden">
+
+        </StackPanel>
+        <StackPanel x:Name="СonsultantPanel" Visibility="Hidden">
+
+        </StackPanel>
     </Grid>
 </Window>
