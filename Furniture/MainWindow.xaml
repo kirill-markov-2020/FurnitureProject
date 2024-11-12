@@ -17,8 +17,8 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Foreground" Value="Gray"/>
-            <Setter Property="Padding" Value="10"/>
+            
+            <Setter Property="Padding" Value="8"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="PasswordBox" x:Key="PasswordBoxBorderRound">
@@ -31,7 +31,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Padding" Value="8"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="Button" x:Key="ButtonBorderRound">
@@ -51,19 +51,23 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="SkyBlue" Offset="0"/>
-                <GradientStop Color="LightSteelBlue" Offset="1"/>
+                <GradientStop Color="LightBlue" Offset="0"/>
+                <GradientStop Color="#FF5F00FF" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
         
         <StackPanel x:Name="AuthorizationPanel" Visibility="Visible">
             <TextBlock Text="Авторизация" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55,75,55,65"/>
-            <TextBox x:Name="TextBoxInputLogin"  Text="Введите логин" HorizontalAlignment="Center"  Width="400" Height="50" VerticalAlignment="Center" Margin="15" GotFocus="TextBoxInputLogin_GotFocus" LostFocus="TextBoxInputLogin_LostFocus" Style="{StaticResource TextBoxBorderRound}"/>
+            <TextBox x:Name="TextBoxInputLogin"  Text="Введите логин" HorizontalAlignment="Center" Foreground="Gray"  Width="400" Height="50" VerticalAlignment="Center" Margin="15" GotFocus="TextBoxInputLogin_GotFocus" LostFocus="TextBoxInputLogin_LostFocus" Style="{StaticResource TextBoxBorderRound}"/>
             <Grid HorizontalAlignment="Center" Width="400" Height="50" Margin="15">
                 
                 <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Stretch" Width="400" Height="50" VerticalAlignment="Stretch" FontSize="20" PasswordChar="*" Padding="12" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Style="{StaticResource PasswordBoxBorderRound}"/>
+                <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Stretch" Width="400" Height="50" VerticalAlignment="Stretch" FontSize="20" Padding="8" Visibility="Collapsed" IsReadOnly="False" Style="{StaticResource TextBoxBorderRound}" TextChanged="PasswordTextBox_TextChanged"/>
+
                 <TextBlock x:Name="PasswordHintText" Visibility="Visible" Text="Введите пароль" Foreground="Gray" FontSize="20" VerticalAlignment="Stretch" Padding="12" HorizontalAlignment="Stretch" IsHitTestVisible="False"/>
+                <Button x:Name="ShowPasswordButton" Content="👁" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Height="30" Margin="0,0,12,0" Background="Transparent" BorderBrush="Transparent" FontSize="20" Click="ShowPasswordButton_Click"/>
             </Grid>
+            
             
             <Button x:Name="AuthorizationButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontSize="20"  Margin="45"  Style="{StaticResource ButtonBorderRound}" Click="AuthorizationButton_Click" />
         </StackPanel>
