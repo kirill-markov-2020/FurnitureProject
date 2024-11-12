@@ -11,6 +11,7 @@
             <TextBlock Text="Авторизация" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55"/>
             <TextBox x:Name="TextBoxInputLogin" Text="" HorizontalAlignment="Center" Width="400" Height="50" VerticalAlignment="Center" FontSize="20" Margin="15" Padding="10"/>
             <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Center" Width="400" Height="50" VerticalAlignment="Center" FontSize="20" Margin="15" PasswordChar="@" Padding="10" />
+            <Button x:Name="AuthorizationButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontSize="20" BorderThickness="3" Background="White" Margin="25" FontWeight="Bold" />
         </StackPanel>
         <StackPanel x:Name="ManagerPanel" Visibility="Hidden">
 
