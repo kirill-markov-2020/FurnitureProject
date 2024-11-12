@@ -25,9 +25,21 @@ namespace Furniture
             InitializeComponent();
         }
 
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private void TextBoxInputLogin_GotFocus(object sender, RoutedEventArgs e)
         {
-
+            if(TextBoxInputLogin.Text == "Введите логин")
+            {
+                TextBoxInputLogin.Text = "";
+                TextBoxInputLogin.Foreground = Brushes.Black;
+            }
+        }
+        private void TextBoxInputLogin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxInputLogin.Text))
+            {
+                TextBoxInputLogin.Text = "Введите логин";
+                TextBoxInputLogin.Foreground = Brushes.Gray;
+            }
         }
     }
 }
