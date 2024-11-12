@@ -62,13 +62,13 @@
             <Grid HorizontalAlignment="Center" Width="400" Height="50" Margin="15">
                 
                 <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Stretch" Width="400" Height="50" VerticalAlignment="Stretch" FontSize="20" PasswordChar="*" Padding="12" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Style="{StaticResource PasswordBoxBorderRound}"/>
-                <TextBlock x:Name="PasswordHintText" Visibility="Visible" Text="Введите пароль" Foreground="Gray" FontSize="20" VerticalAlignment="Stretch" Padding="10" HorizontalAlignment="Stretch" IsHitTestVisible="False"/>
+                <TextBlock x:Name="PasswordHintText" Visibility="Visible" Text="Введите пароль" Foreground="Gray" FontSize="20" VerticalAlignment="Stretch" Padding="12" HorizontalAlignment="Stretch" IsHitTestVisible="False"/>
             </Grid>
             
-            <Button x:Name="AuthorizationButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontSize="20"  Margin="45"  Style="{StaticResource ButtonBorderRound}" />
+            <Button x:Name="AuthorizationButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontSize="20"  Margin="45"  Style="{StaticResource ButtonBorderRound}" Click="AuthorizationButton_Click" />
         </StackPanel>
         <StackPanel x:Name="ManagerPanel" Visibility="Hidden"/>
         <StackPanel x:Name="AdministratorPanel" Visibility="Hidden"/>
-        <StackPanel x:Name="СonsultantPanel" Visibility="Hidden"/>
+        <StackPanel x:Name="ConsultantPanel" Visibility="Hidden"/>
     </Grid>
 </Window>
