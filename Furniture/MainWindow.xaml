@@ -71,8 +71,14 @@
             
             <Button x:Name="AuthorizationButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontSize="20"  Margin="45"  Style="{StaticResource ButtonBorderRound}" Click="AuthorizationButton_Click" />
         </StackPanel>
-        <StackPanel x:Name="ManagerPanel" Visibility="Hidden"/>
-        <StackPanel x:Name="AdministratorPanel" Visibility="Hidden"/>
-        <StackPanel x:Name="ConsultantPanel" Visibility="Hidden"/>
+        <StackPanel x:Name="ManagerPanel" Visibility="Hidden">
+            
+        </StackPanel>
+        <StackPanel x:Name="AdministratorPanel" Visibility="Hidden">
+            
+        </StackPanel>
+        <StackPanel x:Name="ConsultantPanel" Visibility="Hidden">
+            
+        </StackPanel>
     </Grid>
 </Window>
