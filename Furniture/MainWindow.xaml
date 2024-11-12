@@ -79,6 +79,7 @@
         </StackPanel>
         <StackPanel x:Name="ConsultantPanel" Visibility="Hidden">
             
+
         </StackPanel>
     </Grid>
 </Window>
