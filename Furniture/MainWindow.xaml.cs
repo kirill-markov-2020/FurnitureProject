@@ -41,5 +41,17 @@ namespace Furniture
                 TextBoxInputLogin.Foreground = Brushes.Gray;
             }
         }
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordHintText.Visibility = Visibility.Collapsed;
+        }
+
+        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(PasswordBox.Password))
+            {
+                PasswordHintText.Visibility = Visibility.Visible; 
+            }
+        }
     }
 }
