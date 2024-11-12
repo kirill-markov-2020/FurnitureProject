@@ -9,6 +9,8 @@
     <Grid>
         <StackPanel x:Name="AuthorizationPanel" Visibility="Visible">
             <TextBlock Text="Авторизация" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55"/>
+            <TextBox x:Name="TextBoxInputLogin" Text="" HorizontalAlignment="Center" Width="400" Height="50" VerticalAlignment="Center" FontSize="20" Margin="15" Padding="10"/>
+            <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Center" Width="400" Height="50" VerticalAlignment="Center" FontSize="20" Margin="15" PasswordChar="@" Padding="10" />
         </StackPanel>
         <StackPanel x:Name="ManagerPanel" Visibility="Hidden">
 
