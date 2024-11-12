@@ -53,5 +53,7 @@ namespace Furniture
                 PasswordHintText.Visibility = Visibility.Visible; 
             }
         }
+
+       
     }
 }
