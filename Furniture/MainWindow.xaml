@@ -8,7 +8,7 @@
         Title="Furniture" Height="650" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel x:Name="AuthorizationPanel" Visibility="Visible">
-
+            <TextBlock Text="Авторизация" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55"/>
         </StackPanel>
         <StackPanel x:Name="ManagerPanel" Visibility="Hidden">
 
