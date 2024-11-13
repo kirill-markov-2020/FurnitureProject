@@ -86,6 +86,7 @@ namespace Furniture
                 ManagerPanel.Visibility = Visibility.Collapsed;
                 AdministratorPanel.Visibility = Visibility.Collapsed;
                 ConsultantPanel.Visibility = Visibility.Visible;
+                LoadCategoriesAndProducts();
             }
             else if (TextBoxInputLogin.Text == "Введите логин" && PasswordBox.Password == "")
             {
@@ -116,6 +117,70 @@ namespace Furniture
         private void PasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             PasswordBox.Password = PasswordTextBox.Text;  
+        }
+        private void LoadCategoriesAndProducts()
+        {
+            CategoriesTreeView.Items.Clear();
+
+            try
+            {
+                using (SqlConnection connection = GetDatabaseConnection())
+                {
+                    connection.Open();
+
+                    string query = @"SELECT cf.id as CategoryId, cf.name as CategoryName, 
+                                        p.id as ProductId, p.name as ProductName, p.price, p.quantity
+                                     FROM CategoryFurniture cf
+                                     LEFT JOIN Product p ON cf.id = p.categoryFurniture_id
+                                     ORDER BY cf.id, p.id";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    int currentCategoryId = -1;
+                    TreeViewItem currentCategoryItem = null;
+
+                    while (reader.Read())
+                    {
+                        int categoryId = reader.GetInt32(reader.GetOrdinal("CategoryId"));
+                        string categoryName = reader.GetString(reader.GetOrdinal("CategoryName"));
+
+                        if (categoryId != currentCategoryId)
+                        {
+                            currentCategoryItem = new TreeViewItem
+                            {
+                                Header = categoryName,
+                                FontSize = 20,
+                                IsExpanded = false
+                            };
+                            CategoriesTreeView.Items.Add(currentCategoryItem);
+                            currentCategoryId = categoryId;
+                        }
+
+                        if (!reader.IsDBNull(reader.GetOrdinal("ProductId")))
+                        {
+                            string name = reader.GetString(reader.GetOrdinal("ProductName"));
+                            decimal price = reader.GetDecimal(reader.GetOrdinal("price"));
+                            int quantity = reader.GetInt32(reader.GetOrdinal("quantity"));
+
+                            TreeViewItem productItem = new TreeViewItem
+                            {
+                                Header = $"Товар: {name}; Цена: {price:C}; Товаров на складе: {quantity}",
+                                FontSize = 16,
+                                IsExpanded = false
+                            };
+
+                            currentCategoryItem?.Items.Add(productItem);
+                        }
+                    }
+
+                    reader.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
+            }
         }
 
     }

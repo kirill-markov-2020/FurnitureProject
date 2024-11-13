@@ -78,7 +78,8 @@
             
         </StackPanel>
         <StackPanel x:Name="ConsultantPanel" Visibility="Hidden">
-            
+            <TextBlock Text="Ассортимент товаров на складе" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55,20,55,10"/>
+            <TreeView x:Name="CategoriesTreeView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="400" Margin="15"/>
         </StackPanel>
     </Grid>
 </Window>
