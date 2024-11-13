@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,12 @@ namespace Furniture
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private SqlConnection connection;
+        private SqlConnection GetDatabaseConnection()
+        {
+            connection = new SqlConnection("Server=KIRILL-MARKOV;Database=Furniture;Integrated Security=True;");
+            return connection;
         }
 
         private void TextBoxInputLogin_GotFocus(object sender, RoutedEventArgs e)
