@@ -56,7 +56,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         
-        <StackPanel x:Name="AuthorizationPanel" Visibility="Visible">
+        <StackPanel x:Name="AuthorizationPanel" Visibility="Collapsed">
             <TextBlock Text="Авторизация" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55,75,55,65"/>
             <TextBox x:Name="TextBoxInputLogin"  Text="Введите логин" HorizontalAlignment="Center" Foreground="Gray"  Width="400" Height="50" VerticalAlignment="Center" Margin="15" GotFocus="TextBoxInputLogin_GotFocus" LostFocus="TextBoxInputLogin_LostFocus" Style="{StaticResource TextBoxBorderRound}"/>
             <Grid HorizontalAlignment="Center" Width="400" Height="50" Margin="15">
@@ -71,13 +71,14 @@
             
             <Button x:Name="AuthorizationButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontSize="20"  Margin="45"  Style="{StaticResource ButtonBorderRound}" Click="AuthorizationButton_Click" />
         </StackPanel>
-        <StackPanel x:Name="ManagerPanel" Visibility="Hidden">
+        <StackPanel x:Name="ManagerPanel" Visibility="Collapsed">
             
         </StackPanel>
-        <StackPanel x:Name="AdministratorPanel" Visibility="Hidden">
-            
+        <StackPanel x:Name="AdministratorPanel" Visibility="Collapsed">
+
         </StackPanel>
-        <StackPanel x:Name="ConsultantPanel" Visibility="Hidden">
+
+        <StackPanel x:Name="ConsultantPanel" Visibility="Visible">
             <Grid>
                 <Button x:Name="BackAuthorizationButton" Width="24" Height="24" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="25,35,15,15" VerticalAlignment="Center" Click="BackToAuthorization_Click">
                     <Button.Content>
@@ -88,6 +89,7 @@
 
             </Grid>
             <TreeView x:Name="CategoriesTreeView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="400" Margin="15"/>
+
         </StackPanel>
     </Grid>
 </Window>
