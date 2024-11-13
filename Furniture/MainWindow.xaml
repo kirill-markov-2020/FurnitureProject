@@ -5,19 +5,93 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Furniture"
         mc:Ignorable="d"
-        Title="Furniture" Height="650" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Furniture" Height="650" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="TextBoxBorderRound">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="White" CornerRadius="10" BorderBrush="#FF007EFF" BorderThickness="3">
+                            <ScrollViewer x:Name="PART_ContentHost"  />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="PasswordBox" x:Key="PasswordBoxBorderRound">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="White" CornerRadius="10" BorderBrush="#FF007EFF" BorderThickness="3">
+                            <ScrollViewer x:Name="PART_ContentHost"  />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonBorderRound">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="White" CornerRadius="10" BorderBrush="#FF007EFF" BorderThickness="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="20"/>
+            
+        </Style>
+    </Window.Resources>
     <Grid>
-        <StackPanel x:Name="AuthorizationPanel" Visibility="Visible">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="LightBlue" Offset="0"/>
+                <GradientStop Color="#FF5F00FF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        
+        <StackPanel x:Name="AuthorizationPanel" Visibility="Collapsed">
+            <TextBlock Text="Авторизация" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55,75,55,65"/>
+            <TextBox x:Name="TextBoxInputLogin"  Text="Введите логин" HorizontalAlignment="Center" Foreground="Gray"  Width="400" Height="50" VerticalAlignment="Center" Margin="15" GotFocus="TextBoxInputLogin_GotFocus" LostFocus="TextBoxInputLogin_LostFocus" Style="{StaticResource TextBoxBorderRound}"/>
+            <Grid HorizontalAlignment="Center" Width="400" Height="50" Margin="15">
+                
+                <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Stretch" Width="400" Height="50" VerticalAlignment="Stretch" FontSize="20" PasswordChar="*" Padding="12" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Style="{StaticResource PasswordBoxBorderRound}"/>
+                <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Stretch" Width="400" Height="50" VerticalAlignment="Stretch" FontSize="20" Padding="8" Visibility="Collapsed" IsReadOnly="False" Style="{StaticResource TextBoxBorderRound}" TextChanged="PasswordTextBox_TextChanged"/>
+
+                <TextBlock x:Name="PasswordHintText" Visibility="Visible" Text="Введите пароль" Foreground="Gray" FontSize="20" VerticalAlignment="Stretch" Padding="12" HorizontalAlignment="Stretch" IsHitTestVisible="False"/>
+                <Button x:Name="ShowPasswordButton" Content="👁" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Height="30" Margin="0,0,12,0" Background="Transparent" BorderBrush="Transparent" FontSize="20" Click="ShowPasswordButton_Click"/>
+            </Grid>
+            
+            
+            <Button x:Name="AuthorizationButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontSize="20"  Margin="45"  Style="{StaticResource ButtonBorderRound}" Click="AuthorizationButton_Click" />
+        </StackPanel>
+        <StackPanel x:Name="ManagerPanel" Visibility="Collapsed">
+            
+        </StackPanel>
+        <StackPanel x:Name="AdministratorPanel" Visibility="Collapsed">
 
         </StackPanel>
-        <StackPanel x:Name="ManagerPanel" Visibility="Hidden">
+        <StackPanel x:Name="ConsultantPanel" Visibility="Visible">
+            <Grid>
+                <Button x:Name="BackAuthorizationButton" Width="24" Height="24" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="25,35,15,15" VerticalAlignment="Center" Click="BackToAuthorization_Click">
+                    <Button.Content>
+                        <Image Source="/BackAccount.png" />
+                    </Button.Content>
+                </Button>
+                <TextBlock Text="Ассортимент товаров на складе" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="55,20,55,10"/>
 
-        </StackPanel>
-        <StackPanel x:Name="AdministratorPanel" Visibility="Hidden">
-
-        </StackPanel>
-        <StackPanel x:Name="СonsultantPanel" Visibility="Hidden">
-
+            </Grid>
+            <TreeView x:Name="CategoriesTreeView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="400" Margin="15"/>
+   
+            
+            
+            
         </StackPanel>
     </Grid>
 </Window>
