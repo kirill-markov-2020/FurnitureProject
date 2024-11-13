@@ -24,6 +24,7 @@ namespace Furniture
         public MainWindow()
         {
             InitializeComponent();
+            LoadCategoriesAndProducts();
         }
         private SqlConnection connection;
         private SqlConnection GetDatabaseConnection()
@@ -86,7 +87,7 @@ namespace Furniture
                 ManagerPanel.Visibility = Visibility.Collapsed;
                 AdministratorPanel.Visibility = Visibility.Collapsed;
                 ConsultantPanel.Visibility = Visibility.Visible;
-                LoadCategoriesAndProducts();
+                
             }
             else if (TextBoxInputLogin.Text == "Введите логин" && PasswordBox.Password == "")
             {
@@ -180,6 +181,21 @@ namespace Furniture
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
+            }
+        }
+        private void BackToAuthorization_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите выйти из аккаунта?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                TextBoxInputLogin.Text = "Введите логин";
+                TextBoxInputLogin.Foreground = Brushes.Gray;
+                PasswordBox.Password = string.Empty;
+                PasswordHintText.Visibility = Visibility.Visible;
+                ManagerPanel.Visibility = Visibility.Collapsed;
+                AdministratorPanel.Visibility = Visibility.Collapsed;
+                ConsultantPanel.Visibility = Visibility.Collapsed;
+                AuthorizationPanel.Visibility = Visibility.Visible;
             }
         }
 
